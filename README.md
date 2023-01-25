@@ -72,7 +72,7 @@ If you run `translate_md_for_locale("ja")` followed by
 `sandpaper::build_lesson("locale/ja/")`, it will build the (partially)
 translated lesson in `locale/ja/site`.
 
-# Updating a translation
+## Updating a translation
 
 If you modify a markdown file of the original language, then run `po2md()`
 or `translate_md_for_locale()`, only the corresponding parts that need
