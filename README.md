@@ -100,6 +100,25 @@ git_commit("Translate website")
 git_push()
 ```
 
+Note that you will also need to modify `.github/workflows/sandpaper-main.yaml` as follows:
+
+```
+on:
+  push:
+    branches:
+      - main
+      - master
+```
+
+to
+
+```
+on:
+  push:
+    branches:
+      - ja
+```
+
 ## File hierarchy
 
 `dovetail` starts with the standard [sandpaper](https://carpentries.github.io/sandpaper/index.html)
