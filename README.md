@@ -1,6 +1,10 @@
-# r-intermediate-penguins-dt
+# r-intermediate-penguins
 
-This is the repository for the [Carpentries demo lesson](https://carpentries.github.io/sandpaper-docs/introduction.html), modified to demonstrate usage of the [dovetail R package](https://github.com/joelnitta/dovetail) for translating Carpentries lessons.
+This is the repository for the [Carpentries demo
+lesson](https://carpentries.github.io/sandpaper-docs/introduction.html),
+modified to demonstrate usage of the [dovetail R
+package](https://github.com/joelnitta/dovetail) for translating Carpentries
+lessons.
 
 ## About [dovetail](https://github.com/joelnitta/dovetail)
 
@@ -10,12 +14,15 @@ This is the repository for the [Carpentries demo lesson](https://carpentries.git
 devtools::install_github("joelnitta/dovetail")
 ```
 
-Also, note that `dovetail` relies on external software ([mdpo](https://github.com/mondeja/mdpo)) bundled in a [Docker image](https://hub.docker.com/r/joelnitta/mdpo), 
-and therefore requires Docker to be installed and running.
+Also, note that `dovetail` relies on external software
+([mdpo](https://github.com/mondeja/mdpo)) bundled in a [Docker
+image](https://hub.docker.com/r/joelnitta/mdpo), and therefore requires
+Docker to be installed and running.
 
-## Translating a lesson
+## Example translation
 
-The below code demonstrates how you can generate the files needed for translation:
+The below code demonstrates how you can generate the files needed for
+translation:
 
 ```r
 library(dovetail)
@@ -55,24 +62,27 @@ translate_md_for_locale("ja")
 sandpaper::build_lesson("locale/ja/")
 ```
 
-If you run the above code without adding translations to the PO files, the 
-"translated" lesson will appear exactly like the original lesson (in English).
+If you run the above code without adding translations to the PO files, the
+"translated" lesson will appear exactly like the original lesson (in
+English).
 
 I have partially translated lessons for Japanese.
 
-If you run `translate_md_for_locale("ja")` followed by `sandpaper::build_lesson("locale/ja/")`, it will build the (partially) translated
-lesson in `locale/ja/site`.
+If you run `translate_md_for_locale("ja")` followed by
+`sandpaper::build_lesson("locale/ja/")`, it will build the (partially)
+translated lesson in `locale/ja/site`.
 
-## Updating a translation
+# Updating a translation
 
-If you modify a markdown file of the original language, then run `md2po()` or `create_po_for_locale()`, only the corresponding parts that need updating in the PO file will change.
-These will be marked with the comment `#, fuzzy`.
-Once the translation has been updated, the `#, fuzzy` comment can be removed.
+If you modify a markdown file of the original language, then run `po2md()`
+or `translate_md_for_locale()`, only the corresponding parts that need
+updating in the PO file will change.
 
 ## File hierarchy
 
-`dovetail` starts with the standard [sandpaper](https://carpentries.github.io/sandpaper/index.html)
-file hierarchy, and modifies it as follows (indicated at bottom with `NEW`):
+`dovetail` starts with the standard
+[sandpaper](https://carpentries.github.io/sandpaper/index.html)  file
+hierarchy, and modifies it as follows (indicated at bottom with `NEW`):
 
 ```
 |-- .gitignore                  # - Ignore everything in the site/ folder
