@@ -13,7 +13,7 @@ devtools::install_github("joelnitta/dovetail")
 Also, note that `dovetail` relies on external software ([mdpo](https://github.com/mondeja/mdpo)) bundled in a [Docker image](https://hub.docker.com/r/joelnitta/mdpo), 
 and therefore requires Docker to be installed and running.
 
-## Example translation
+## Translating a lesson
 
 The below code demonstrates how you can generate the files needed for translation:
 
@@ -58,12 +58,16 @@ sandpaper::build_lesson("locale/ja/")
 If you run the above code without adding translations to the PO files, the 
 "translated" lesson will appear exactly like the original lesson (in English).
 
-I have provided some PO files with a few strings translated into Japanese
-to demonstrate how this works in the [ja branch](https://github.com/joelnitta/buoyant-barnacle-dt/tree/ja).
+I have partially translated lessons for Japanese.
 
-If you check out the `ja` branch and run `translate_md_for_locale("ja")` followed
-by `sandpaper::build_lesson("locale/ja/")`, it will build the (partially) translated
+If you run `translate_md_for_locale("ja")` followed by `sandpaper::build_lesson("locale/ja/")`, it will build the (partially) translated
 lesson in `locale/ja/site`.
+
+## Updating a translation
+
+If you modify a markdown file of the original language, then run `md2po()` or `create_po_for_locale()`, only the corresponding parts that need updating in the PO file will change.
+These will be marked with the comment `#, fuzzy`.
+Once the translation has been updated, the `#, fuzzy` comment can be removed.
 
 ## File hierarchy
 
