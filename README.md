@@ -69,6 +69,37 @@ If you modify a markdown file of the original language, then run `md2po()` or `c
 These will be marked with the comment `#, fuzzy`.
 Once the translation has been updated, the `#, fuzzy` comment can be removed.
 
+## Building website on GitHub
+
+GitHub can be used to build the website with a workflow script.
+
+Here is how to set it up to build a translation from a translation branch using R commands (do this after making the translation):
+
+```
+library(gert)
+
+# Create ja branch
+git_branch_create("ja")
+git_branch_checkout("ja")
+
+# Move translated directories to main dir
+trans_dirs <- fs::dir_ls("locale/ja", type = "directory")
+new_dirs <- fs::path_split(trans_dirs) |> purrr::map_chr(dplyr::last)
+fs::dir_copy(trans_dirs, new_dirs, overwrite = TRUE)
+fs::dir_delete(trans_dirs)
+
+# Move translated files to main dir
+trans_files <- fs::dir_ls("locale/ja", type = "file")
+new_files <- fs::path_split(trans_files) |> purrr::map_chr(dplyr::last)
+fs::file_copy(trans_files, new_files, overwrite = TRUE)
+fs::dir_delete(trans_files)
+
+# Commit changes and push
+git_add(files = "*")
+git_commit("Translate website")
+git_push()
+```
+
 ## File hierarchy
 
 `dovetail` starts with the standard [sandpaper](https://carpentries.github.io/sandpaper/index.html)
