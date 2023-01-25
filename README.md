@@ -1,4 +1,4 @@
-# r-intermediate-penguins
+# r-intermediate-penguins-dt
 
 This is the repository for the [Carpentries demo lesson](https://carpentries.github.io/sandpaper-docs/introduction.html), modified to demonstrate usage of the [dovetail R package](https://github.com/joelnitta/dovetail) for translating Carpentries lessons.
 
